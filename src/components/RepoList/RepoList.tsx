@@ -1,86 +1,91 @@
-import { useState, useEffect } from "react";
 import RepoCard from "../RepoCard/RepoCard";
-import Spinner from "../ui/Spinner/Spinner";
-import Alert from "../ui/Alert/Alert";
+
 import "./RepoList.styles.scss";
 
-type PinnedRepos = {
-  owner: string;
+type StaticRepo = {
   repo: string;
-  link: string;
+
   description: string;
-  image: string;
-  language: string;
-  languageColor: string;
   stars: number;
   forks: number;
 };
 
+const repos: StaticRepo[] = [
+  {
+    repo: "Test Scheduler Platform",
+   
+    description:
+      "Web platform for planning and tracking automotive validation activities, developed with Angular, ASP.NET Core (.NET 8), and MongoDB. Features an interactive scheduling calendar, advanced filtering, PDF export, real-time tracking, and Web Push notifications.",
+    stars: 0,
+    forks: 0,
+  },
+
+  {
+    repo: "Training Center Management Application",
+
+    description:
+      "Full-stack application built with React and Spring Boot, featuring Spring Security, REST APIs, MySQL, Docker, MVC architecture, and multi-role authentication.",
+    stars: 0,
+    forks: 0,
+  },
+
+  {
+    repo: "Dentaire-Solution",
+    description:
+      "Full-stack dental appointment management application developed with React 18, Tailwind CSS, Node.js, Express, and MySQL, with automated email notifications.",
+    stars: 1,
+    forks: 0,
+  },
+
+  {
+    repo: "ShopX",
+    description:
+      "E-commerce application developed with ASP.NET Core for the backend and Angular for the frontend.",
+    stars: 1,
+    forks: 0,
+  },
+
+  {
+    repo: "ServiTounsi",
+    description:
+      "Home services platform developed with ASP.NET Core for the backend and React.js for the frontend.",
+    stars: 0,
+    forks: 0,
+  },
+
+  {
+    repo: "Restaurant Website",
+    description:
+      "Restaurant website developed with ASP.NET Core for the backend and React.js for the frontend.",
+    stars: 0,
+    forks: 0,
+  },
+
+  {
+    repo: "Medical Imaging Diagnosis Assistance",
+    description:
+      "Responsive web platform developed with Django, SQLite, and Bootstrap, integrating pre-trained deep learning models including ResNet101, DenseNet101, and VGG19 for real-time AI predictions.",
+    stars: 1,
+    forks: 0,
+  },
+
+  {
+    repo: "Spa Management Web Application",
+    description:
+      "Web application for managing spa activities at Marhaba Palace Sousse, developed with React, Laravel, MySQL, and JWT authentication.",
+    stars: 1,
+    forks: 0,
+  },
+];
+
 export default function RepoList() {
-  const [repos, setRepos] = useState<PinnedRepos[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchRepos = async (url: string): Promise<PinnedRepos[]> => {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      if (data.length === 0) {
-        throw new Error("No pinned repos found");
-      }
-      return data;
-    };
-
-    const attemptFetch = async () => {
-      try {
-        // Try primary URL first
-        const data = await fetchRepos(
-          "https://pinned-repos.teamsync.vip/stekatag"
-        );
-        setRepos(data);
-      } catch (primaryError) {
-        console.error("Primary URL failed, trying fallback:", primaryError);
-
-        try {
-          // Try fallback URL
-          const data = await fetchRepos(
-            "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=stekatag"
-          );
-          setRepos(data);
-        } catch (fallbackError: any) {
-          if (fallbackError.message === "Network response was not ok") {
-            setError("Your network may be down. Please try again.");
-          } else if (fallbackError.message === "No pinned repos found") {
-            setError("No pinned repos found");
-          } else {
-            setError("Error fetching repos");
-          }
-          console.error("Both URLs failed:", fallbackError);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    attemptFetch();
-  }, []);
-
   return (
     <>
       <div className="repos">
-        {loading ? (
-          <div className="spinner-wrapper">
-            <h4>Loading projects</h4>
-            <Spinner />
-          </div>
-        ) : (
-          repos.map((repo) => <RepoCard key={repo.repo} {...repo} />)
-        )}
+        {repos.map((repo) => (
+          <RepoCard key={repo.repo} {...repo} />
+        ))}
       </div>
-      {error && <Alert message={error} />}
     </>
   );
 }
