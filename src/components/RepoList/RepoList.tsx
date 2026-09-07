@@ -4,8 +4,10 @@ import "./RepoList.styles.scss";
 
 type StaticRepo = {
   repo: string;
+  image: string;
 
   description: string;
+  technologies: string[];
   stars: number;
   forks: number;
 };
@@ -13,10 +15,21 @@ type StaticRepo = {
 const repos: StaticRepo[] = [
   {
     repo: "Test Scheduler Platform",
-   
+    
     description:
       "Web platform for planning and tracking automotive validation activities, developed with Angular, ASP.NET Core (.NET 8), and MongoDB. Features an interactive scheduling calendar, advanced filtering, PDF export, real-time tracking, and Web Push notifications.",
-    stars: 0,
+     technologies: [
+      "Angular",
+      "ASP.NET Core",
+      ".NET 8",
+      "MongoDB",
+      "Docker",
+      "GitLab CI/CD",
+      "Web Push"
+    ],
+        image: "/assets/test-scheduler.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -25,7 +38,17 @@ const repos: StaticRepo[] = [
 
     description:
       "Full-stack application built with React and Spring Boot, featuring Spring Security, REST APIs, MySQL, Docker, MVC architecture, and multi-role authentication.",
-    stars: 0,
+    technologies: [
+      "React",
+      "Spring Boot",
+      "Spring Security",
+      "MySQL",
+      "REST API",
+      "Docker"
+    ],
+        image: "/assets/training-center.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -33,7 +56,16 @@ const repos: StaticRepo[] = [
     repo: "Dentaire-Solution",
     description:
       "Full-stack dental appointment management application developed with React 18, Tailwind CSS, Node.js, Express, and MySQL, with automated email notifications.",
-    stars: 1,
+       technologies: [
+      "React 18",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MySQL"
+    ],
+        image: "/assets/dentaire.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -41,7 +73,15 @@ const repos: StaticRepo[] = [
     repo: "ShopX",
     description:
       "E-commerce application developed with ASP.NET Core for the backend and Angular for the frontend.",
-    stars: 1,
+     technologies: [
+      "Angular",
+      "ASP.NET Core",
+      "C#",
+      "REST API"
+    ],
+        image: "/assets/ShopX.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -49,7 +89,16 @@ const repos: StaticRepo[] = [
     repo: "ServiTounsi",
     description:
       "Home services platform developed with ASP.NET Core for the backend and React.js for the frontend.",
-    stars: 0,
+    
+    technologies: [
+      "React.js",
+      "ASP.NET Core",
+      "C#",
+      "REST API"
+    ],
+        image: "/assets/ServiTounsi.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -57,7 +106,15 @@ const repos: StaticRepo[] = [
     repo: "Restaurant Website",
     description:
       "Restaurant website developed with ASP.NET Core for the backend and React.js for the frontend.",
-    stars: 0,
+    
+    technologies: [
+      "React.js",
+      "ASP.NET Core",
+      "C#"
+    ],
+    image: "/assets/Restaurant.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -65,7 +122,18 @@ const repos: StaticRepo[] = [
     repo: "Medical Imaging Diagnosis Assistance",
     description:
       "Responsive web platform developed with Django, SQLite, and Bootstrap, integrating pre-trained deep learning models including ResNet101, DenseNet101, and VGG19 for real-time AI predictions.",
-    stars: 1,
+      technologies: [
+      "Python",
+      "Django",
+      "SQLite",
+      "Bootstrap",
+      "TensorFlow",
+      "Keras",
+      "Deep Learning"
+    ],
+        image: "/assets/Scan.png",
+
+      stars: 0,
     forks: 0,
   },
 
@@ -73,7 +141,17 @@ const repos: StaticRepo[] = [
     repo: "Spa Management Web Application",
     description:
       "Web application for managing spa activities at Marhaba Palace Sousse, developed with React, Laravel, MySQL, and JWT authentication.",
-    stars: 1,
+   
+    technologies: [
+      "React",
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "JWT"
+    ],
+        image: "/assets/Spa.png",
+
+      stars: 0,
     forks: 0,
   },
 ];

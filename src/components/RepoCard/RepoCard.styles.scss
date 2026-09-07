@@ -15,14 +15,78 @@
   @media only screen and (min-width: 50em) {
     padding: 1.75rem;
   }
+&__technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 
+&__technology {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+
+  border-radius: 999px;
+  border: 1px solid var(--accent-regular);
+
+  background: var(--accent-subtle);
+  color: var(--accent-dark);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition: var(--theme-transition);
+}
+
+&__technology:hover {
+  transform: translateY(-2px);
+}
   &:hover {
     box-shadow: var(--shadow-md);
     border: 2.5px solid var(--accent-dark);
     filter: brightness(1.1);
     transform: translateY(-0.5rem);
   }
+&__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
 
+&__info {
+  flex: 1;
+  min-width: 0;
+}
+
+&__image {
+  flex-shrink: 0;
+  width: 140px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--accent-regular);
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+}@media only screen and (max-width: 40em) {
+  &__content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    order: -1;
+  }
+}
   &__header {
     display: flex;
     align-items: center;
@@ -43,7 +107,7 @@
     margin: 0.8rem 0;
     color: var(--gray-200);
 
-    --max-lines: 3;
+    --max-lines: 5;
     overflow: hidden;
 
     display: -webkit-box;
