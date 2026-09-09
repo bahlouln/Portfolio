@@ -19,10 +19,9 @@ export default function RepoCard({
   forks,
 }: RepoCardProps) {
   return (
-    <a
+    <div
       className="repo-card"
       title={`View ${repo}`}
-      href={`/slug?project=${encodeURIComponent(repo)}`}
     >
       <div className="repo-card__content">
 
@@ -90,6 +89,6 @@ export default function RepoCard({
 
         </div>
       </div>
-    </a>
+    </div>
   );
 }
